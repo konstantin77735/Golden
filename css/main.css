@@ -228,9 +228,6 @@ footer .number {
 
 /*Для айпад*/
 @media (max-width:1024px) {
-
-
-
     .services,
     .works {
         width: 100%;
@@ -259,7 +256,7 @@ footer .number {
     header {
         min-height: 550px;
     }
-
+   
     nav {
         width: 100px;
     }
