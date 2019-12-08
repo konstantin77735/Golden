@@ -19,8 +19,8 @@ div {
 
 header {
     background: url(../img/first-bg.jpg) no-repeat center top / cover;
-
-    height: 100vh;
+    height: 100%;
+    min-height: 800px;
 }
 
 .container {
@@ -44,8 +44,8 @@ nav {
     display: block;
 }
 
-.menu li:hover{
-    border-bottom: 1px solid #fff; 
+.menu li:hover {
+    border-bottom: 1px solid #fff;
 }
 
 .menu li {
@@ -97,7 +97,7 @@ h1 {
     padding-top: 115px;
 }
 
-.title h2 {
+.title .title__header {
     font-size: 2.8571rem;
     font-weight: bold;
     text-align: center;
@@ -105,7 +105,7 @@ h1 {
     margin: 0;
 }
 
-.title p {
+.title .title__desc {
     color: #777777;
     text-align: center;
     font-size: 1.1429rem;
@@ -182,4 +182,63 @@ footer .number {
     font-size: 2.4rem;
     padding-right: 20px;
     color: #fff;
+}
+
+/*Для айпад*/
+@media (max-width:1024px) {
+
+    .services,
+    .works {
+        width: 100%;
+    }
+
+    .services__item,
+    .works__item {
+        width: 220px;
+    }
+
+    .menu li {
+        margin-right: 16px;
+    }
+}
+
+/* для фаблетов */
+@media(max-width:415px) {
+    header {
+        min-height: 550px;
+    }
+
+    nav {
+        width: 100px;
+    }
+
+    h1 {
+        font-size: 1.3571rem;
+    }
+
+    .titles__first {
+        color: #fff;
+        text-transform: uppercase;
+        text-align: center;
+        margin-top: 130px;
+    }
+
+    .services,
+    .works {
+        grid-template-columns: 1fr;
+        margin: 50px auto 0 auto;
+        grid-row-gap: 40px;
+    }
+
+    .title {
+        padding-top: 85px;
+    }
+    .titles__first, .title .title__header{
+          font-size: 1.8571rem;
+    }
+    footer{
+        height: 15vh;
+    }
+    footer .number {
+        font-size: 1.3rem;}
 }
