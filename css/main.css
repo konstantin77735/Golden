@@ -161,10 +161,6 @@ h1 {
     float: left;
 }
 
-.works img:nth-child(2) {
-    margin-left: 29px;
-}
-
 .works img:last-child {
     float: right;
 }
@@ -220,7 +216,7 @@ footer .number {
         color: #fff;
         text-transform: uppercase;
         text-align: center;
-        margin-top: 130px;
+        margin-top: 70px;
     }
 
     .services,
