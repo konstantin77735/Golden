@@ -1,1 +1,65 @@
-document.addEventListener('DOMContentLoaded',function(){const burgerMenu={burger:document.querySelector('.menu__burger'),menuItems:document.querySelectorAll('.menu__item'),isChanging:!1,burgerStart:function(){let that=this,changingTime=500;this.burger.addEventListener('click',function(){(that.burger.classList.contains('close')&&that.burger.isChanging==!1)?(showOrHideMenuItems('none',0),that.burger.classList.remove('close')):(showOrHideMenuItems('block',1),that.burger.classList.add('close'))});showOrHideMenuItems();window.addEventListener("resize",showOrHideMenuItems);function showOrHideMenuItems(displayVal,opacityVal){(document.documentElement.clientWidth>415)?(that.burger.style.display='none',that.menuItems.forEach(function(it,indx){it.style.opacity=1,it.style.display='block'})):(that.burger.style.display='block',that.burger.classList.remove('close'),that.menuItems.forEach(function(it,indx){it.style.opacity=0,it.style.display='none'}));if(displayVal&&opacityVal){for(let item of that.menuItems){(displayVal=='none'&&that.burger.isChanging==!1)?(setTimeout(function(){that.burger.isChanging=!0;item.style.opacity=opacityVal},changingTime/2.5),setTimeout(function(){item.style.display=displayVal;that.burger.isChanging=!1},changingTime)):(that.burger.isChanging=!0,setTimeout(function(){item.style.display=displayVal},changingTime/1.3),setTimeout(function(){item.style.opacity=opacityVal;that.burger.isChanging=!1},changingTime))}}}}};burgerMenu.burgerStart()})
+document.addEventListener('DOMContentLoaded', function () {
+    const burgerMenu = {
+        burger: document.querySelector('.menu__burger'),
+        menuItems: document.querySelectorAll('.menu__item'),
+        isChanging: false,
+        burgerStart: function () {
+            let that = this,
+                changingTime = 500,
+                disabledTime = 4000; //время которое меню не будет откликаться на клики, чтобы не было багов
+            this.burger.addEventListener('click', function () {
+
+                if (that.isChanging == false) {
+                    that.isChanging = true;
+                    that.burger.classList.contains('close') ? (showOrHideMenuItems('none', 0)) : (showOrHideMenuItems('block', 1));
+                }
+
+            });
+
+            function changeOver() {
+                burgerMenu.burger.style.opacity=.3;
+                        setTimeout(function () {
+                            that.isChanging = false;
+                               burgerMenu.burger.style.opacity=1;
+                        }, disabledTime);
+                    }
+            
+            function showOrHideMenuItems(displayVal, opacityVal) {
+                         
+          
+                if (displayVal) {
+
+                    
+                    for (let item of that.menuItems) {
+
+
+                        if (displayVal == 'none') {
+                            that.burger.classList.remove('close');
+                    setTimeout(function () {item.style.display = displayVal; 
+                    }, changingTime);
+                    setTimeout(function () {item.style.opacity = opacityVal;
+                    }, changingTime / 2);
+                            changeOver();
+                        } else {
+                            that.burger.classList.add('close');
+                    setTimeout(function () {item.style.display = displayVal;
+                    }, changingTime / 2);
+                    setTimeout(function () {item.style.opacity = opacityVal;
+                    }, changingTime);
+                            changeOver();
+
+
+                        }
+
+
+                    }
+
+                } 
+            
+                
+                
+            }
+        }
+    };
+    burgerMenu.burgerStart();
+})
